@@ -79,6 +79,8 @@ class HandelsRegister:
             so_id = schlagwortOptionen.get(self.args.schlagwortOptionen)
 
             self.browser["form:schlagwortOptionen"] = [str(so_id)]
+            
+            self.browser["form:ergebnisseProSeite_input"] = self.args.ergebnisseProSeite
 
             response_result = self.browser.submit()
 
@@ -165,6 +167,13 @@ def parse_args():
                           help="Keyword options: all=contain all keywords; min=contain at least one keyword; exact=contain the exact company name.",
                           choices=["all", "min", "exact"],
                           default="all"
+                        )
+    parser.add_argument(
+                          "-e",
+                          "--ergebnisseProSeite",
+                          help="Keyword options: 10, 25, 50, 100",
+                          choices=["10", "25", "50", "100"],
+                          default="100"
                         )
     args = parser.parse_args()
 
