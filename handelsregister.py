@@ -81,10 +81,10 @@ class HandelsRegister:
             self.browser["form:schlagwortOptionen"] = [str(so_id)]
             
             if hasattr(self.args, "postleitzahl") and self.args.postleitzahl != None:
-                self.browser["form:postleitzahl"] = self.args.postleitzahl
+                self.browser["form:postleitzahl"] = str(self.args.postleitzahl)
 
             if hasattr(self.args, "ort") and self.args.ort != None:
-                self.browser["form:ort"] = self.args.ort
+                self.browser["form:ort"] = str(self.args.ort)
             
             self.browser["form:ergebnisseProSeite_input"] = [str(self.args.ergebnisseProSeite)]
 
