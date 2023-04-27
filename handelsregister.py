@@ -86,7 +86,7 @@ class HandelsRegister:
             if hasattr(self.args, "ort") and self.args.ort != None:
                 self.browser["form:ort"] = self.args.ort
             
-            self.browser["form:ergebnisseProSeite_input"] = self.args.ergebnisseProSeite
+            self.browser["form:ergebnisseProSeite_input"] = [str(self.args.ergebnisseProSeite)]
 
             response_result = self.browser.submit()
 
