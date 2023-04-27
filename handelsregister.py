@@ -124,11 +124,13 @@ def parse_result(result):
     return d
 
 def pr_company_info(c):
-    for tag in ('name', 'court', 'state', 'status'):
-        print('%s: %s' % (tag, c.get(tag, '-')))
-    print('history:')
-    for name, loc in c.get('history'):
-        print(name, loc)
+    # TODO: attribute switch for output
+    #for tag in ('name', 'court', 'state', 'status'):
+    #    print('%s: %s' % (tag, c.get(tag, '-')))
+    #print('history:')
+    #for name, loc in c.get('history'):
+    #    print(name, loc)
+    print('"%s";"%s";"%s"' % (c.get('name'), c.get('state'), c.get('status')))
 
 def get_companies_in_searchresults(html):
     soup = BeautifulSoup(html, 'html.parser')
