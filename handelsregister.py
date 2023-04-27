@@ -80,6 +80,12 @@ class HandelsRegister:
 
             self.browser["form:schlagwortOptionen"] = [str(so_id)]
             
+            if hasattr(self.args, "postleitzahl") and self.args.postleitzahl != None:
+                self.browser["form:postleitzahl"] = self.args.postleitzahl
+
+            if hasattr(self.args, "ort") and self.args.ort != None:
+                self.browser["form:ort"] = self.args.ort
+            
             self.browser["form:ergebnisseProSeite_input"] = self.args.ergebnisseProSeite
 
             response_result = self.browser.submit()
@@ -168,6 +174,18 @@ def parse_args():
                           choices=["all", "min", "exact"],
                           default="all"
                         )
+    parser.add_argument(
+                            "-plz",
+                            "--postleitzahl",
+                            help="Postleitzahl der Niederlassung",
+                            default=""
+    )
+    parser.add_argument(
+                            "-o",
+                            "--ort",
+                            help="Ort der Niederlassung",
+                            default=""
+    )
     parser.add_argument(
                           "-e",
                           "--ergebnisseProSeite",
