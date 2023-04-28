@@ -80,6 +80,9 @@ class HandelsRegister:
 
             self.browser["form:schlagwortOptionen"] = [str(so_id)]
             
+            if hasattr(self.args, "aenlichLautendeSchlagwoerter") and self.args.aenlichLautendeSchlagwoerter != None:
+                self.browser["form:aenlichLautendeSchlagwoerter"].selected = True
+            
             if hasattr(self.args, "postleitzahl") and self.args.postleitzahl != None:
                 self.browser["form:postleitzahl"] = str(self.args.postleitzahl)
 
@@ -175,6 +178,12 @@ def parse_args():
                           help="Keyword options: all=contain all keywords; min=contain at least one keyword; exact=contain the exact company name.",
                           choices=["all", "min", "exact"],
                           default="all"
+                        )
+    parser.add_argument(
+                          "-als",
+                          "--aenlichLautendeSchlagwoerter",
+                          help="Search for similar-looking keywords",
+                          default=""
                         )
     parser.add_argument(
                             "-plz",
